@@ -146,7 +146,7 @@ def cart_list(request):
     return JsonResponse(serializer.errors, status=400)
 
 @csrf_exempt
-def cart_by_user(request, userId):
+def cart_by_user_id(request, userId):
     try:
         cart = Cart.objects.get(userId=userId)
     except:
@@ -197,15 +197,15 @@ def cartItem_by_id(request, pk):
         cartItem.delete()
         return HttpResponse(status=201)
     
-@csrf_exempt
-def cartItem_by_cart(request, cartId):
-    try:
-        cartItem = CartItem.objects.filter(cartId=cartId)
-    except:
-        return HttpResponse(status=404)
-    if request.method == 'GET':
-        serializer = CartItemSerializer(cartItem, many=True)
-        return JsonResponse(serializer.data, safe=False)
+# @csrf_exempt
+# def cartItem_by_cart(request, cartId):
+#     try:
+#         cartItem = CartItem.objects.filter(cartId=cartId)
+#     except:
+#         return HttpResponse(status=404)
+#     if request.method == 'GET':
+#         serializer = CartItemSerializer(cartItem, many=True)
+#         return JsonResponse(serializer.data, safe=False)
     
 @csrf_exempt
 def cartItem_by_cart_id(request, cartId):
