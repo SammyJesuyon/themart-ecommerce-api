@@ -7,3 +7,4 @@ The application manages a store with products, customers, and orders. The API is
 python manage.py runserver
 ```
 
+...to be continued...
